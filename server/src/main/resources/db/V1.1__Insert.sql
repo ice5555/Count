@@ -1,0 +1,1 @@
+INSERT INTO home(label,`count`,custom)VALUES("t1",123.0,"lhb");
