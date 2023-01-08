@@ -27,16 +27,14 @@ public class Home {
 
     @GetMapping("/list")
     @ApiOperation("查询")
-    public ResponseEntity<List<HomeDto>> test1(){
-        
-        
+    public ResponseEntity<List<HomeDto>> list(){
         return ResponseEntity.ok(HomeService.labels());
     }
 
-    @PostMapping("/test2")
-    @ApiOperation("测试接口2")
-    public ResponseEntity<Querydto> test2(@RequestBody Querydto msg){
-        return ResponseEntity.ok(msg);
+    @PostMapping("/add")
+    @ApiOperation("增加")
+    public ResponseEntity<Boolean> add(@RequestBody HomeDto dto){
+        return ResponseEntity.ok(HomeService.add(dto));
     }
 
 

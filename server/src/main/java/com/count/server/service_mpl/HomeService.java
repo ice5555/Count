@@ -8,7 +8,7 @@ import com.count.server.model.HomeDto;
 import com.count.server.service.IHomeService;
 import java.util.List;
 
-//@Service
+@Service
 public class HomeService implements IHomeService{
     @Autowired
     IHomeMapper mapper;
@@ -18,4 +18,11 @@ public class HomeService implements IHomeService{
 
         return mapper.labels();
     }
+
+    @Override
+    public boolean add(HomeDto dto){
+
+        return mapper.add(dto);
+    }
+
 }

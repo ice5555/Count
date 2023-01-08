@@ -5,6 +5,8 @@
     <select id="labels" resultType="com.count.server.model.HomeDto">
         select * from home;
     </select>
-
+    <insert id="add" parameterType="com.count.server.model.HomeDto">
+        insert into home(label,custom,`count`,comment,`type`,cus_date)values(#{label},#{custom},#{count},#{comment},#{type},#{cus_date});
+    </insert>
 </mapper>
 
