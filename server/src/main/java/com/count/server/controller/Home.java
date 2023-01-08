@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.count.server.model.HomeDto;
 import com.count.server.reqdto.Querydto;
 import com.count.server.service.IHomeService;
 
@@ -24,9 +25,9 @@ public class Home {
     @Autowired
     IHomeService HomeService;
 
-    @GetMapping("/test1")
-    @ApiOperation("测试接口1")
-    public ResponseEntity<List<String>> test1(){
+    @GetMapping("/list")
+    @ApiOperation("查询")
+    public ResponseEntity<List<HomeDto>> test1(){
         
         
         return ResponseEntity.ok(HomeService.labels());

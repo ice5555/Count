@@ -2,6 +2,8 @@ package com.count.server.service;
 
 import java.util.List;
 
+import com.count.server.model.HomeDto;
+
 public interface IHomeService{
-    List <String> labels();
+    List <HomeDto> labels();
 }

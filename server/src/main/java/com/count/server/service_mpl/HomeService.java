@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.count.server.dao.IHomeMapper;
+import com.count.server.model.HomeDto;
 import com.count.server.service.IHomeService;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class HomeService implements IHomeService{
     IHomeMapper mapper;
     
     @Override
-    public List <String> labels(){
+    public List <HomeDto> labels(){
 
         return mapper.labels();
     }
