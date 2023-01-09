@@ -1,0 +1,45 @@
+{
+
+    "count":56
+    "list":[
+        {        
+            "id":"1",
+            "label":"薯片",
+            "cutom":"lhb",
+            "type":"零食",
+            "count":6,
+            "cus_date":"2023-01-01",
+            "pic":null
+        },
+        {        
+            "id":"2",
+            "label":"菠萝蜜",
+            "cutom":"lhb",
+            "type":"水果",
+            "count":12,
+            "cus_date":"2023-02-01",
+            "pic":null
+        },  
+        {        
+            "id":"3",
+            "label":"烤肠",
+            "cutom":"lhb",
+            "type":"餐饮",
+            "count":5.8,
+            "cus_date":"2023-01-01",
+            "pic":null
+        },
+        {        
+            "id":"4",
+            "label":"榴莲",
+            "cutom":"lhb",
+            "type":"水果",
+            "count":102,
+            "cus_date":"2023-02-01",
+            "pic":null
+        },
+
+    ]
+
+
+}
