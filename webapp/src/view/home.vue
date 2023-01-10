@@ -1,13 +1,13 @@
 <template>
     <div class="box">
-        <HeaderTop></HeaderTop><!--顶栏-->
+        <Header></Header><!--顶栏-->
         <div class ="content">
             <tool></tool><!--工具条-->
-            <el-row :gutter= "20" style= "margin-top:18px">
+            <el-row :gutter= "20" style= "margin-top:18px"><!--布局方式-->
                 <el-col :span="16">
                     <home-list></home-list>
                 </el-col>
-                <el-col :span="8"><!--tab页面-->
+                <el-col :span="8">
                     <el-tabs v-model="tabNow" class="chartBox">
                         <el-tabl-pane name="total" label="总消费">
                             <echart1></echart1>
@@ -26,9 +26,19 @@
 
 <script>
     import HomeList from "../components/HomeList"
+    import Header from "../components/header.vue"
+    import Echart1 from "../components/echart1.vue"
+    import Echart2 from "../components/echart2.vue"
+    import Echart3 from "../components/echart3.vue"
+    import Tool from "../components/tool.vue"
     export default{
         name:"home",
-        components:{HomeList},
+        data(){
+            return {
+                tabNow:"total",
+            }
+        },
+        components:{HomeList,Header,Echart1,Echart2,Echart3,Tool},
         methods:{
             add(){
                 let form= {
@@ -53,5 +63,17 @@
 </script>
 
 <style scoped>
+  .box {
+    margin: 0;
+    background-color: #f0f0f0;
+    padding-bottom: 20px;
+  }
+  .box .content {
+    margin: 12px;
+    background-color: white;
+    padding: 18px;
+  
+  }
+
 
 </style>

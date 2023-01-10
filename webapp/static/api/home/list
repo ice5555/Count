@@ -1,7 +1,7 @@
 {
 
-    "count":56
-    "list":[
+    "count":56 ,
+    "list": [
         {        
             "id":"1",
             "label":"薯片",
@@ -37,7 +37,7 @@
             "count":102,
             "cus_date":"2023-02-01",
             "pic":null
-        },
+        }
 
     ]
 

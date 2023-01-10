@@ -6,14 +6,15 @@
               height="calc(100vh-230px)"
               :data="tableData.list"
               >
-      <el-table-colunm v-for ="item in coulumns"
+      <!--for循环-->
+      <el-table-column v-for ="item in columns"
                        :key="item.prop"
                        :prop="item.prop"
                        :label="item.label"
                        :width="item.width"
                        >
-      </el-table-colunm>
-      <el-table-colunm label="操作"
+      </el-table-column>
+      <el-table-column label="操作"
                        width="150"
       >
       <template slot-scope="scope">
@@ -22,14 +23,13 @@
           <el-button icon="el-icon-delete" size="mini" circle type="danger" @click="rowDelete(scope)"></el-button>
         </template>
 
-    </el-table-colunm>
+    </el-table-column>
 
     </el-table>
 
     <!--分页组件-->
     <el-pagination style="float :right"
-    @size-change="handleSizeChange"
-                  
+                   @size-change="handleSizeChange"
                    @current-change="handleCurrentchange"
                    :current-page="currentPage"
                    :page-sizes="[15,20,25,30]" 
@@ -50,6 +50,7 @@
 </template>
 
 <script>
+  import Detail from "./detail"
   export default{
     name:'HomeList',
     components:{Detail},
@@ -60,7 +61,7 @@
         showDetail:false,
         currentRow:{},
         currentPage:1,
-        coulumns:[
+        columns:[
           {
             prop:"label",
             label:"消费名称"
@@ -102,7 +103,7 @@
 
       },
        getData(){
-         this.$axiosJava.get("static/api/home/list").then(res=>{
+         this.$axios.get("/static/api/home/list").then(res=>{
            this.tableData=res.data
         })
        }

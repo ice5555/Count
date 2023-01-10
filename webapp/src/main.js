@@ -6,10 +6,13 @@ import router from './router'
 import ElementUI from '../node_modules/element-ui';
 import '../node_modules/element-ui/lib/theme-chalk/index.css';
 import axios from "axios"
+import * as echarts from "echarts"
+import "element-ui/lib/theme-chalk/index.css"
+window.echarts=echarts
 Vue.use(ElementUI);
 
 Vue.config.productionTip = false
-
+Vue.prototype.$axios=axios
 
 Vue.prototype.$axiosJava =axios.create({
   baseURL:'http://localhost:8080/'

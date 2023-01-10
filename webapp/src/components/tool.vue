@@ -1,0 +1,81 @@
+<template>
+    <el-row :gutter="20">
+      <el-col :span="2">
+        <el-select size="mini" v-model="param.type">
+          <el-option
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+            v-for="item in searchType"
+          ></el-option>
+        </el-select>
+      </el-col>
+      <el-col :span="3">
+        <el-input size="mini" placeholder="请输入关键字"></el-input>
+      </el-col>
+      <el-col :span="2">
+        <el-button size="mini" type="primary">搜索</el-button>
+      </el-col>
+      <el-col :span="6">
+        <el-date-picker
+          size="mini"
+          v-model="param.data"
+          type="daterange"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期">
+        </el-date-picker>
+      </el-col>
+      <el-col :span="2">
+        <el-button size="mini" type="success">获取平账日</el-button>
+      </el-col>
+      <el-col :span="2">
+        <el-button size="mini" type="primary">添加记录</el-button>
+      </el-col>
+      <el-col :span="5">
+        <el-button size="mini" type="danger">批量删除</el-button>
+      </el-col>
+      <el-col :span="2">
+        <el-switch
+          size="mini"
+          v-model="param.used"
+          active-text="全部"
+          inactive-text="已销费">
+        </el-switch>
+      </el-col>
+    </el-row>
+  </template>
+  
+  <script>
+      export default {
+          name: "tool",
+      data(){
+            return{
+              param:{},
+          searchType: [
+            {
+              label: "全部",
+              value: "all"
+            },
+            {
+              label: "标题",
+              value: "title"
+            },
+            {
+              label: "分类",
+              value: "type"
+            },
+            {
+              label: "消费者",
+              value: "author"
+            },
+          ],
+        }
+      }
+      }
+  </script>
+  
+  <style scoped>
+  
+  </style>
+  

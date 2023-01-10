@@ -1,15 +1,15 @@
 [
     {
         "name":"零食",
-        "values":6
+        "value":6
     },
     {
         "name":"水果",
-        "values":114
+        "value":114
     },
     {
         "name":"餐饮",
-        "values":5.8
+        "value":5.8
     }
     
 ]

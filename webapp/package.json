@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "axios": "^1.2.2",
+    "echarts": "^5.4.1",
     "element-ui": "^2.15.12",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "wangeditor": "^4.7.15"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
