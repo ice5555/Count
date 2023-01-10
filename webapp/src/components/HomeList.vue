@@ -1,9 +1,9 @@
 <template>
   <div>
-    <!--表本身-->
+    <!--图表本身--height="calc(100vh-50px)"-->
     <el-table border
               width="100%"
-              height="calc(100vh-230px)"
+              height="250px"
               :data="tableData.list"
               >
       <!--for循环-->
