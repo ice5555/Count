@@ -35,6 +35,7 @@
     }
   
     .header .user{
+      cursor: pointer;
       font-size: 14px;
       color: white;
       font-weight: bolder;

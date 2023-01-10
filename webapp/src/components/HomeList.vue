@@ -39,12 +39,12 @@
                    >  
     </el-pagination>
     <!--对话框-->
-    <el-diaglog :visible.sync="showDetail" width="1200px">
+    <el-dialog :visible.sync="showDetail" width="1200px">
       <detail @cancel ="showDetail=false" 
               :rows="currentRow" 
               :type="detailType">
       </detail>
-    </el-diaglog>
+    </el-dialog>
   
   </div>   
 </template>
