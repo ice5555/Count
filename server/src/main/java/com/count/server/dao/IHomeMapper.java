@@ -12,4 +12,5 @@ import com.count.server.model.HomeDto;
 public interface IHomeMapper {
     List <HomeDto> labels();    
     boolean add(HomeDto dto);
+    int num();
 }

@@ -10,6 +10,7 @@ public class HomeDto {
     String comment;
     String type;
     Date cus_date;
+    String pic;
 
 
     public int getId() {
@@ -56,7 +57,12 @@ public class HomeDto {
         this.cus_date = cus_date;
     }
 
-
+    public String getPic() {
+        return pic;
+    }
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
 
 
 }

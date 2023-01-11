@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.count.server.dao.IHomeMapper;
 import com.count.server.model.HomeDto;
+import com.count.server.resdto.ListResult;
 import com.count.server.service.IHomeService;
 import java.util.List;
 
@@ -14,9 +15,11 @@ public class HomeService implements IHomeService{
     IHomeMapper mapper;
     
     @Override
-    public List <HomeDto> labels(){
-
-        return mapper.labels();
+    public ListResult labels(){
+        ListResult result = new ListResult();
+        result.setList(mapper.labels());
+        result.setCount(mapper.num()); 
+        return result;
     }
 
     @Override

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.count.server.model.HomeDto;
 import com.count.server.reqdto.Querydto;
+import com.count.server.resdto.ListResult;
 import com.count.server.service.IHomeService;
 
 import io.swagger.annotations.Api;
@@ -27,7 +28,7 @@ public class Home {
 
     @GetMapping("/list")
     @ApiOperation("查询")
-    public ResponseEntity<List<HomeDto>> list(){
+    public ResponseEntity<ListResult> list(){
         return ResponseEntity.ok(HomeService.labels());
     }
 
