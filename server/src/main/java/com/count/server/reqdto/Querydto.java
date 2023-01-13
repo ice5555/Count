@@ -10,7 +10,24 @@ public class Querydto {
     @ApiModelProperty(value="类型")
     String type;
 
-    
+    @ApiModelProperty(value = "页码（从1开始）")
+    int page;
+    @ApiModelProperty(value = "每页数量")
+    int num;
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+    public int getNum() {
+        return num;
+    }
+    public void setNum(int num) {
+        this.num = num;
+    }
     public String getKey() {
         return key;
     }

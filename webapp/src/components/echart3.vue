@@ -6,7 +6,7 @@
       export default {
           name: "echart3",
       mounted() {
-        let url = "/static/api/home/vs"
+        let url = "/static/api/home/compare"
         this.$axios
           .get(url)
           .then(res => {

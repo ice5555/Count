@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.count.server.model.HomeDto;
 import com.count.server.reqdto.Querydto;
+import com.count.server.resdto.CmpDto;
 import com.count.server.resdto.ListResult;
+import com.count.server.resdto.SumDto;
 import com.count.server.service.IHomeService;
+//import com.count.server.resdto.s;;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,10 +29,28 @@ public class Home {
     @Autowired
     IHomeService HomeService;
 
-    @GetMapping("/list")
+    @PostMapping("/list")
     @ApiOperation("查询")
-    public ResponseEntity<ListResult> list(){
-        return ResponseEntity.ok(HomeService.labels());
+    public ResponseEntity<ListResult> list(@RequestBody Querydto querydto){
+        return ResponseEntity.ok(HomeService.list(querydto));
+    }
+
+    @GetMapping("/detail")
+    @ApiOperation("详情")
+    public ResponseEntity<HomeDto> detail(@RequestParam("id") int id){
+        return ResponseEntity.ok(HomeService.detail(id));
+    }
+
+    @PostMapping("/sum")
+    @ApiOperation("总和")
+    public ResponseEntity<List<SumDto>> sum(@RequestBody Querydto querydto){
+        return ResponseEntity.ok(HomeService.sum(querydto));
+    }
+
+    @PostMapping("/compare")
+    @ApiOperation("比较")
+    public ResponseEntity<List<CmpDto>> compare(@RequestBody Querydto querydto){
+        return ResponseEntity.ok(HomeService.compare(querydto));
     }
 
     @PostMapping("/add")
@@ -38,7 +59,16 @@ public class Home {
         return ResponseEntity.ok(HomeService.add(dto));
     }
 
+    @PostMapping("/edit")
+    @ApiOperation("修改")
+    public ResponseEntity<Boolean> edit(@RequestBody HomeDto dto){
+        return ResponseEntity.ok(HomeService.edit(dto));
+    }
 
-
+    @PostMapping("/delete")
+    @ApiOperation("批量删除")
+    public ResponseEntity<Integer> delete(@RequestBody List<Integer> ids ){
+        return ResponseEntity.ok(HomeService.delete(ids));
+    }
 
 }

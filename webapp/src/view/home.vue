@@ -13,7 +13,7 @@
                             <echart1></echart1>
                             <echart2></echart2>
                         </el-tabl-pane>
-                        <el-tabl-pane lazy name="vs" label="消费对比">
+                        <el-tabl-pane lazy name="compare" label="消费对比">
                             <echart3></echart3>
                         </el-tabl-pane>
                     </el-tabs>
