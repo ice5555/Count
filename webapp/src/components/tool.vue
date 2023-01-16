@@ -32,10 +32,10 @@
       <el-col :span="2">
         <el-button size="mini" type="primary" @click="$emit('add')">添加记录</el-button>
       </el-col>
-      <el-col :span="5">
+      <el-col :span="2">
         <el-button size="mini" type="danger" @click="$emit('delete')">批量删除</el-button>
       </el-col>
-      <el-col :span="2">
+      <el-col :span="5" style="text-align: right;">
         <el-switch
           size="mini"
           v-model="params.used"

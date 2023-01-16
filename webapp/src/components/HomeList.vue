@@ -3,7 +3,7 @@
     <!--图表本身--height="calc(100vh-50px)"-->
     <el-table border
               width="100%"
-              height="450px"
+              height="calc(80vh)"
               :data="tableData.list"
               @selection-change="handleSelectionChange"
               >
