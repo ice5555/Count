@@ -14,12 +14,12 @@
             sum += list[i].value
           }
           return result
-        }
+        
       },
-      mounted() {
-        let url = "/static/api/home/sum"
-        this.$axios
-          .get(url)
+      query(params) {
+        let url = "api/home/sum"
+        this.$axiosJava
+          .post(url,params)
           .then(res => {
             let myChart = echarts.init(document.getElementById("chart2"))
             myChart.clear()
@@ -91,7 +91,7 @@
             })
           })
       }
-    }
+    }}
   </script>
   
   <style scoped>

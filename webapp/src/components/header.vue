@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div class="Header">
       <!--img :src="'./static/images/logo.png'"-->
       <div class="title">记账系统</div>
       <div class="user"><i class="el-icon-user-solid"></i>admin </div>
@@ -8,33 +8,34 @@
   
 <script>
     export default {
-    name: "header"
+    name: "Header"
     }
 </script>
   
 <style scoped>
-    .header {
+    .Header {
       width: 100%;
       height: 60px;
+      line-height: 60px;
       background-color: rgb(100, 191, 237);
       text-align: left;
       display: flex;
-      line-height: 60px;
+      
     }
   
-    .header img {
+    .Header img {
       width: 42px;
       margin: 9px;
     }
   
-    .header .title{
+    .Header .title{
       font-size: 18px;
       color: white;
       font-weight: bolder;
       width: calc(100% - 145px);
     }
   
-    .header .user{
+    .Header .user{
       cursor: pointer;
       font-size: 14px;
       color: white;

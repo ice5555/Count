@@ -6,10 +6,11 @@
   
     export default {
       name: "echart1",
-      mounted() {
-        let url = "/static/api/home/sum"
-        this.$axios
-          .get(url)
+      methods:{
+        query(params){
+        let url = "api/home/sum"
+        this.$axiosJava
+          .post(url,params)
           .then(res => {
             // 基于准备好的dom，初始化echarts实例
             let myChart = echarts.init(document.getElementById("chart1"))
@@ -37,7 +38,7 @@
             })
           })
       }
-    }
+    }}
 </script>
   
   <style scoped>

@@ -89,10 +89,8 @@
       props: ["rows", "type"],
       data() {
         return {
-          form: {
-            showInHome: true
-          },
-          users: ["用户1", "lhb"],
+          form: {},
+          users: ["用户1","用户2", "lhb"],
           types: [],
         }
       },
@@ -101,10 +99,13 @@
       },
       methods: {
         cancel() {
-          this.$emit("cancel")
+          this.$emit("cancel")//触发‘cancel’的事件
         },
         submit() {
-  
+          this.$axiosJava.post(`api/home/${this.form.id ? "edit" : "add"}`,this.form).then(res=>{
+            this.$message.success("success")//全局提示组件
+            this.$emit("add")//组件之间传递事件的方法，触发add的事件
+          })
         },
         getTypes() {
           let url = `/static/api/home/type`
@@ -118,23 +119,29 @@
           })
         },
         getDetail() {
-          let form = this.rows
-  
-          if (form) {
-            let url = `/static/api/home/detail`
-            this.$axios({
-              method: "get",
-              url: url,
-            }).then((res) => {
+          // let form = this.rows
+          if (this.rows.id) {
+            let url = `api/home/detail`
+            this.$axiosJava.get(url, {params: {id: this.rows.id}}).then((res) => {
               this.form = res.data
             }).catch((error) => {
               this.$message.error("获取数据失败")
             })
+          }else{
+            this.form={used: true}
           }
         }
       },
-      mounted() {
-        this.getDetail()
+      watch: {//监听rows的数据更改
+      rows: {
+        immediate: true,
+        handler() {
+          this.getDetail()//更改时调用getdetail函数
+        },
+
+      }
+    },
+      mounted() {//组件完成后自动调用
         if (this.type == "bj") {
           this.getTypes()
         }

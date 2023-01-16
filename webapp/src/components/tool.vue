@@ -1,7 +1,7 @@
 <template>
     <el-row :gutter="20">
       <el-col :span="2">
-        <el-select size="mini" v-model="param.type">
+        <el-select size="mini" v-model="params.type">
           <el-option
             :key="item.value"
             :label="item.label"
@@ -11,15 +11,15 @@
         </el-select>
       </el-col>
       <el-col :span="3">
-        <el-input size="mini" placeholder="请输入关键字"></el-input>
+        <el-input size="mini" placeholder="请输入关键字" v-model="params.key" clearable="clearable"></el-input>
       </el-col>
       <el-col :span="2">
-        <el-button size="mini" type="primary">搜索</el-button>
+        <el-button size="mini" type="primary" @click="search">搜索</el-button>
       </el-col>
       <el-col :span="6">
         <el-date-picker
           size="mini"
-          v-model="param.data"
+          v-model="params.data"
           type="daterange"
           range-separator="至"
           start-placeholder="开始日期"
@@ -30,15 +30,15 @@
         <el-button size="mini" type="success">获取平账日</el-button>
       </el-col>
       <el-col :span="2">
-        <el-button size="mini" type="primary">添加记录</el-button>
+        <el-button size="mini" type="primary" @click="$emit('add')">添加记录</el-button>
       </el-col>
       <el-col :span="5">
-        <el-button size="mini" type="danger">批量删除</el-button>
+        <el-button size="mini" type="danger" @click="$emit('delete')">批量删除</el-button>
       </el-col>
       <el-col :span="2">
         <el-switch
           size="mini"
-          v-model="param.used"
+          v-model="params.used"
           active-text="全部"
           inactive-text="已销费">
         </el-switch>
@@ -51,7 +51,10 @@
           name: "tool",
       data(){
             return{
-              param:{},
+              params:{
+                type:"all",
+                key:"",
+              },
           searchType: [
             {
               label: "全部",
@@ -59,7 +62,7 @@
             },
             {
               label: "标题",
-              value: "title"
+              value: "label"
             },
             {
               label: "分类",
@@ -67,10 +70,18 @@
             },
             {
               label: "消费者",
-              value: "author"
+              value: "custom"
             },
           ],
         }
+      },
+      methods:{
+        search(){
+          this.$emit("search", this.params)
+        }
+      },
+      mounted(){
+        this.search()
       }
       }
   </script>
