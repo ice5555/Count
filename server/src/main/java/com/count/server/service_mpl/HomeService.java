@@ -25,6 +25,7 @@ public class HomeService implements IHomeService{
             add("custom");
             add("type");
             add("comment");
+            add("write_off");
         }};
         if (type.equals("all")) {
             for (String tp : types

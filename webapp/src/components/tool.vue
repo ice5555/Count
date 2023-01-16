@@ -38,9 +38,9 @@
       <el-col :span="5" style="text-align: right;">
         <el-switch
           size="mini"
-          v-model="params.used"
+          v-model="params.write_off"
           active-text="全部"
-          inactive-text="已销费">
+          inactive-text="已销账">
         </el-switch>
       </el-col>
     </el-row>
@@ -52,6 +52,7 @@
       data(){
             return{
               params:{
+                write_off:false,
                 type:"all",
                 key:"",
               },

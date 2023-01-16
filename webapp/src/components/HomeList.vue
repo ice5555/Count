@@ -86,6 +86,9 @@
           },{
             prop:"count",
             label:"消费金额"
+          },{
+            prop:"write_off",
+            label:"是否已销账"
           }
         ]
       }
@@ -143,6 +146,9 @@
         this.params.page=this.currentPage
          this.$axiosJava.post("api/home/list",this.params).then(res=>{
            this.tableData=res.data
+           this.tableData.list.map((item)=>{
+            item.write_off=item.write_off ? "是" : "否"
+           })
         })
        },
     query(params) {

@@ -15,6 +15,9 @@ public class Querydto {
     @ApiModelProperty(value = "每页数量")
     int num;
 
+    @ApiModelProperty(value = "是否已经销账")
+    boolean write_off;
+
     public int getPage() {
         return page;
     }
@@ -40,4 +43,13 @@ public class Querydto {
     public void setType(String type) {
         this.type = type;
     }
+
+    public Boolean getWrite_off() {
+        return write_off;
+    }
+    public void setWrite_off(Boolean write_off) {
+        this.write_off = write_off;
+    }
+
+
 }

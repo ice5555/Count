@@ -7,7 +7,7 @@
         <where>
             ${type}
         </where>
-        <!-- limit #{page},#{num} -->
+        limit #{page},#{num}
     </select>
 
     <select id="count" resultType="java.lang.Integer">
