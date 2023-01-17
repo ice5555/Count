@@ -10,9 +10,9 @@
                 and #{date[1]} >= cus_date
                 and cus_date >= #{date[0]}
             </if>
-            <if test="write_off==true">
+            <!-- <if test="write_off==true">
                 and write_off is true
-            </if>
+            </if> -->
         </where>
         order by cus_date desc   <!-- 按照cus_date降序排列 -->
         limit #{page},#{num}
@@ -26,9 +26,9 @@
                 and #{date[1]} >= cus_date
                 and cus_date >= #{date[0]}
             </if>
-            <if test="write_off==true">
+            <!-- <if test="write_off==true">
                 and write_off is true
-            </if>
+            </if> -->
         </where>;
     </select>
 
@@ -44,9 +44,9 @@
                 and #{date[1]} >= cus_date
                 and cus_date >= #{date[0]}
             </if>
-            <if test="write_off==true">
+            <!-- <if test="write_off==true">
                 and write_off is true
-            </if>
+            </if> -->
         </where>
         group by type;
     </select>
@@ -60,16 +60,18 @@
                 and #{date[1]} >= cus_date
                 and cus_date >= #{date[0]}
             </if>
-            <if test="write_off==true">
+            <!-- <if test="write_off==true">
                 and write_off is true
-            </if>
+            </if> -->
         </where>
         group by type,custom;
     </select>
 
     <insert id="add" parameterType="com.count.server.model.HomeDto">
-        insert into home(label,custom,`count`,comment,`type`,cus_date,pic,write_off)
-        values(#{label},#{custom},#{count},#{comment},#{type},#{cus_date},#{pic},#{write_off});
+        <!-- insert into home(label,custom,`count`,comment,`type`,cus_date,pic,write_off)
+        values(#{label},#{custom},#{count},#{comment},#{type},#{cus_date},#{pic},#{write_off}); -->
+        insert into home(label,custom,`count`,comment,`type`,cus_date,pic)
+        values(#{label},#{custom},#{count},#{comment},#{type},#{cus_date},#{pic});
     </insert>
 
     <update id="edit" parameterType="com.count.server.model.HomeDto">
@@ -81,7 +83,7 @@
             `type`=#{type},
             cus_date=#{cus_date},
             pic=#{pic},
-            write_off=#{write_off}
+            <!-- write_off=#{write_off} -->
         where id = #{id}
     </update>
 <!-- 使用mybatis的标签 -->

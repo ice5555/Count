@@ -59,11 +59,11 @@
             //     })
             // }
             tabClick(tab){
-                this.searchEchart(this.params)
+                this.search(this.params)
             },
             
-            searchEchart(params){
-               
+            search(params){
+                this.$refs.list.query(params)
                 switch (this.tabNow){
                     case "total":
                         this.$refs.echart1.query(params)
@@ -72,11 +72,8 @@
                     case "compare":
                         this.$refs.echart3.query(params)
                         break
-                }},
-                search(params) {
-                    this.$refs.list.query(params)
-                    this.searchEchart(params)
-                    this.params=params
+                }
+                this.params=params
             },
 
 

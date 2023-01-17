@@ -54,15 +54,16 @@
         </el-row>
         <el-row>
           <el-col :span="12">
-            <el-form-item label="是否已销账：">
-              <el-switch
+            <!-- <el-form-item label="是否已销账："> -->
+              <!-- v-model="form.write_off" -->
+              <!-- <el-switch
                 v-if="type=='bj'"
-                v-model="form.write_off"
+                
                 active-text="是"
                 inactive-text="否"
-              ></el-switch>
-              <div v-else>{{ form.write_off ? "是" : "否" }}</div>
-            </el-form-item>
+              ></el-switch> -->
+              <!-- <div v-else>{{ form.write_off ? "是" : "否" }}</div> -->
+            <!-- </el-form-item> -->
           </el-col>
         </el-row>
   
@@ -129,7 +130,7 @@
               this.$message.error("获取数据失败")
             })
           }else{
-            this.form={write_off: true}
+            // this.form={write_off: true}
           }
         }
       },

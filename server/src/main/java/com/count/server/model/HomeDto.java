@@ -10,7 +10,7 @@ public class HomeDto {
     String comment;
     String type;
     Date cus_date;
-    Boolean write_off;
+    // Boolean write_off;
     String pic;
 
 
@@ -65,11 +65,11 @@ public class HomeDto {
         this.pic = pic;
     }
     
-    public Boolean getWrite_off() {
-        return write_off;
-    }
-    public void setWrite_off(Boolean write_off) {
-        this.write_off = write_off;
-    }
+    // public Boolean getWrite_off() {
+    //     return write_off;
+    // }
+    // public void setWrite_off(Boolean write_off) {
+    //     this.write_off = write_off;
+    // }
     
 }
