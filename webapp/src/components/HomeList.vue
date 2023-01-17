@@ -94,6 +94,23 @@
       }
     },
     methods:{
+      getLastCount() {
+        let form = {
+          "key": "平账",
+          "type": "type",
+          "page": 1,
+          "num": 1,
+          "date": [0, 9641995035788],//就会更新params.date的值为第一条记录的日期减去一天和当前时间减去5天，
+          "write_off": false
+        }
+        this.$axiosJava.post("api/home/list", form).then(res => {
+          this.params.date = [new Date(res.data.list[0].cus_date) - (-24 * 60 * 60 * 1000), new Date() - (1000 * 60 * 60 * -5 * 24)]
+          this.$emit("changeDate", this.params.date)
+          this.reSearch()
+        }).catch((error) => {
+          this.$message.error("查询失败")
+        })
+      },
       handleSelectionChange(rows) {
         this.selection = rows
       },
@@ -153,7 +170,7 @@
        },
     query(params) {
         this.currentPage = 1
-
+        this.selection = []
         this.params = {
           ...params,
           num: this.currentSize,

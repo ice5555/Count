@@ -2,11 +2,11 @@
     <div class="box">
         <Header></Header><!--顶栏-->
         <div class ="content">
-            <tool @search="search" @delete="$refs.list.deleteRows()" @add="$refs.list.add()">
+            <tool ref="tool" @getLastCount="$refs.list.getLastCount()" @search="search" @delete="$refs.list.deleteRows()" @add="$refs.list.add()">
             </tool><!--工具条-->
             <el-row :gutter= "20" style= "margin-top:18px"><!--布局方式-->
                 <el-col :span="16">
-                    <home-list @search="search" ref="list"></home-list>
+                    <home-list @changeDate="(date)=>{$refs.tool.setDate(date)}" search="search" ref="list"></home-list>
                 </el-col>
                 <el-col :span="8">
                     <el-tabs v-model="tabNow" class="chartBox" @tab-click="tabClick">
@@ -15,7 +15,7 @@
                             <echart2 ref="echart2" :params="params"></echart2>
                         </el-tab-pane>
                         <el-tab-pane name="compare" label="消费对比">
-                            <echart3 ref="echart3"></echart3>
+                            <echart3 ref="echart3"  @balance="search(params)"></echart3>
                         </el-tab-pane>
                     </el-tabs>
                 </el-col>
@@ -59,11 +59,11 @@
             //     })
             // }
             tabClick(tab){
-                this.search(this.params)
+                this.searchEchart(this.params)
             },
             
-            search(params){
-                this.$refs.list.query(params)
+            searchEchart(params){
+               
                 switch (this.tabNow){
                     case "total":
                         this.$refs.echart1.query(params)
@@ -72,8 +72,11 @@
                     case "compare":
                         this.$refs.echart3.query(params)
                         break
-                }
-                this.params=params
+                }},
+                search(params) {
+                    this.$refs.list.query(params)
+                    this.searchEchart(params)
+                    this.params=params
             },
 
 

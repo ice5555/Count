@@ -69,9 +69,9 @@
         <el-form-item label="消费说明：">
           <editor
             v-if="type=='bj'"
-            v-model="form.content"
+            v-model="form.comment"
           ></editor>
-          <div v-html="form.content" v-else></div>
+          <div v-html="form.comment" v-else></div>
         </el-form-item>
         <el-form-item>
           <el-button v-if="type=='bj'" size="small" type="success" @click="submit()">提交</el-button>
@@ -90,7 +90,7 @@
       data() {
         return {
           form: {},
-          users: ["用户1","用户2", "lhb"],
+          users: ["用户1","用户2", "lhb","用户3"],
           types: [],
         }
       },

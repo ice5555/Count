@@ -5,15 +5,30 @@
     <select id="list" resultType="com.count.server.model.HomeDto" parameterType="com.count.server.reqdto.Querydto" >
         select * from home
         <where>
-            ${type}
+            (${type})
+             <if test="date != null">
+                and #{date[1]} >= cus_date
+                and cus_date >= #{date[0]}
+            </if>
+            <if test="write_off==true">
+                and write_off is true
+            </if>
         </where>
+        order by cus_date desc   <!-- 按照cus_date降序排列 -->
         limit #{page},#{num}
     </select>
 
     <select id="count" resultType="java.lang.Integer">
         select count(1) from home
         <where>
-            ${type}
+            (${type})
+             <if test="date != null">
+                and #{date[1]} >= cus_date
+                and cus_date >= #{date[0]}
+            </if>
+            <if test="write_off==true">
+                and write_off is true
+            </if>
         </where>;
     </select>
 
@@ -24,7 +39,14 @@
     <select id="sum" resultType="com.count.server.resdto.SumDto">
         select type as name, sum(`count`) as value from home
         <where>
-            ${type}
+            (${type})
+              <if test="date != null">
+                and #{date[1]} >= cus_date
+                and cus_date >= #{date[0]}
+            </if>
+            <if test="write_off==true">
+                and write_off is true
+            </if>
         </where>
         group by type;
     </select>
@@ -33,13 +55,21 @@
     <select id="compare" resultType="com.count.server.resdto.CmpDto">
         select type as name ,sum(`count`) as value , custom from home
         <where>
-            ${type}
+           ( ${type})
+             <if test="date != null">
+                and #{date[1]} >= cus_date
+                and cus_date >= #{date[0]}
+            </if>
+            <if test="write_off==true">
+                and write_off is true
+            </if>
         </where>
         group by type,custom;
     </select>
 
     <insert id="add" parameterType="com.count.server.model.HomeDto">
-        insert into home(label,custom,`count`,comment,`type`,cus_date)values(#{label},#{custom},#{count},#{comment},#{type},#{cus_date});
+        insert into home(label,custom,`count`,comment,`type`,cus_date,pic,write_off)
+        values(#{label},#{custom},#{count},#{comment},#{type},#{cus_date},#{pic},#{write_off});
     </insert>
 
     <update id="edit" parameterType="com.count.server.model.HomeDto">
@@ -49,7 +79,9 @@
             `count`=#{count},
             comment=#{comment},
             `type`=#{type},
-            cus_date=#{cus_date}
+            cus_date=#{cus_date},
+            pic=#{pic},
+            write_off=#{write_off}
         where id = #{id}
     </update>
 <!-- 使用mybatis的标签 -->
