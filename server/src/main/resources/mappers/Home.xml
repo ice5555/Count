@@ -31,7 +31,7 @@
 
 
     <select id="compare" resultType="com.count.server.resdto.CmpDto">
-        select type as name ,count(`count`) as value , custom from home
+        select type as name ,sum(`count`) as value , custom from home
         <where>
             ${type}
         </where>
