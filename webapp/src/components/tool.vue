@@ -11,7 +11,7 @@
         </el-select>
       </el-col>
       <el-col :span="3">
-        <el-input size="mini" placeholder="请输入关键字" v-model="params.key" clearable="clearable"></el-input>
+        <el-input size="mini" placeholder="请输入关键字" v-model="params.key" clearable="clearable" @clear="search"></el-input>
       </el-col>
       <el-col :span="2">
         <el-button size="mini" type="primary" @click="search">搜索</el-button>
@@ -19,7 +19,7 @@
       <el-col :span="6">
         <el-date-picker
           size="mini"
-          v-model="params.data"
+          v-model="params.date"
           type="daterange"
           range-separator="至"
           start-placeholder="开始日期"
@@ -35,7 +35,7 @@
       <el-col :span="2">
         <el-button size="mini" type="danger" @click="$emit('delete')">批量删除</el-button>
       </el-col>
-      <el-col :span="5" style="text-align: right;">
+      <el-col :span="5" style="text-align: right">
         <el-switch
           size="mini"
           v-model="params.write_off"
@@ -77,6 +77,10 @@
         }
       },
       methods:{
+        setDate(date) {
+        this.$set(this.params, "date", date)
+      },
+
         search(){
           this.$emit("search", this.params)
         }

@@ -46,8 +46,8 @@
           <el-col :span="8">
             <el-form-item label="消费日期：">
               <el-date-picker v-if="type=='bj'" value-format='yyyy-MM-dd'
-                              v-model="form.cusDate"></el-date-picker>
-              <el-input v-else v-model="form.cusDate" readonly="readonly"></el-input>
+                              v-model="form.cus_date"></el-date-picker>
+              <el-input v-else v-model="form.cus_date" readonly="readonly"></el-input>
             </el-form-item>
           </el-col>
   
@@ -103,8 +103,9 @@
         },
         submit() {
           this.$axiosJava.post(`api/home/${this.form.id ? "edit" : "add"}`,this.form).then(res=>{
-            this.$message.success("success")//全局提示组件
+            
             this.$emit("add")//组件之间传递事件的方法，触发add的事件
+            this.$message.success("success")//全局提示组件
           })
         },
         getTypes() {
