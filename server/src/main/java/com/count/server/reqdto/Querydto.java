@@ -3,6 +3,8 @@ package com.count.server.reqdto;
 import java.util.Set;
 
 import io.swagger.annotations.ApiModelProperty;
+import java.sql.Timestamp;
+import java.util.List;
 
 public class Querydto {
     @ApiModelProperty(value="关键字")
@@ -15,8 +17,10 @@ public class Querydto {
     @ApiModelProperty(value = "每页数量")
     int num;
 
-    // @ApiModelProperty(value = "是否已经销账")
-    // boolean write_off;
+    @ApiModelProperty(value = "是否已经销账")
+    boolean write_off;
+    @ApiModelProperty(value = "起止日期")
+    List<Timestamp> date;
 
     public int getPage() {
         return page;
@@ -44,12 +48,17 @@ public class Querydto {
         this.type = type;
     }
 
-    // public Boolean getWrite_off() {
-    //     return write_off;
-    // }
-    // public void setWrite_off(Boolean write_off) {
-    //     this.write_off = write_off;
-    // }
-
+    public Boolean getWrite_off() {
+        return write_off;
+    }
+    public void setWrite_off(Boolean write_off) {
+        this.write_off = write_off;
+    }
+    public List<Timestamp> getDate() {
+        return date;
+    }
+    public void setDate(List<Timestamp> date) {
+        this.date = date;
+    }
 
 }
