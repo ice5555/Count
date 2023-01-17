@@ -136,7 +136,7 @@
         this.getData()
 
       },
-      handleCurrentchange(){
+      handleCurrentchange(currentPage){
         this.currentPage = currentPage
         this.getData()
       },
