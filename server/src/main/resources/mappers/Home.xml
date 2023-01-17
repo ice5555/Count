@@ -22,7 +22,7 @@
     </select>
 
     <select id="sum" resultType="com.count.server.resdto.SumDto">
-        select type as name, count(`count`) as value from home
+        select type as name, sum(`count`) as value from home
         <where>
             ${type}
         </where>
