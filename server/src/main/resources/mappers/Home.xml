@@ -13,8 +13,11 @@
             <if test="write_off==true">
                 and write_off is true
             </if>
-        </where>
-        order by cus_date desc   <!-- 按照cus_date降序排列 -->
+        </where><!-- 按照cus_date降序排列 -->
+        <!-- order by cus_date desc    -->
+        <if test="order != null">
+            order by ${orderProp} ${order}
+        </if>
         limit #{page},#{num}
     </select>
 

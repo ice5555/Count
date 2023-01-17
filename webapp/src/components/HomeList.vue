@@ -6,6 +6,7 @@
               height="calc(80vh)"
               :data="tableData.list"
               @selection-change="handleSelectionChange"
+              @sort-change="sortBySelf"
               >
        <el-table-column
         type="selection"
@@ -14,6 +15,7 @@
 
       <!--for循环-->
       <el-table-column v-for ="item in columns"
+                       :sortable="item.sortable"
                        :key="item.prop"
                        :prop="item.prop"
                        :label="item.label"
@@ -72,28 +74,39 @@
         columns:[
           {
             prop:"label",
-            label:"消费名称"
+            label:"消费名称",
+            sortable: "custom"
           },
           {
             prop:"cus_date",
-            label:"消费日期"
+            label:"消费日期",
+            sortable: "custom"
           },{
             prop:"type",
-            label:"消费类别"
+            label:"消费类别",
+            sortable: "custom"
           },{
             prop:"custom",
-            label:"消费者"
+            label:"消费者",
+            sortable: "custom"
           },{
             prop:"count",
-            label:"消费金额"
+            label:"消费金额",
+            sortable: "custom"
           },{
             prop:"write_off",
-            label:"是否已销账"
+            label:"是否已销账",
+            sortable: "custom"
           }
         ]
       }
     },
     methods:{
+      sortBySelf(dto) {
+        this.params.order = dto.order
+        this.params.orderProp = dto.prop
+        this.getData()
+      },
       getLastCount() {
         let form = {
           "key": "平账",
@@ -101,7 +114,9 @@
           "page": 1,
           "num": 1,
           "date": [0, 9641995035788],//就会更新params.date的值为第一条记录的日期减去一天和当前时间减去5天，
-          "write_off": false
+          "write_off": false,
+          "order": "descending",
+          "orderProp": "cusDate"
         }
         this.$axiosJava.post("api/home/list", form).then(res => {
           this.params.date = [new Date(res.data.list[0].cus_date) , new Date() - (1000 * 60 * 60 * -7* 24)]
@@ -158,7 +173,8 @@
         this.getData()
       },
        getData(){
-        
+        this.params.num = this.currentSize
+        this.params.page = this.currentPage
         this.params.num=this.currentSize
         this.params.page=this.currentPage
          this.$axiosJava.post("api/home/list",this.params).then(res=>{

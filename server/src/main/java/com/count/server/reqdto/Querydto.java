@@ -22,6 +22,11 @@ public class Querydto {
     @ApiModelProperty(value = "起止日期")
     List<Timestamp> date;
 
+    @ApiModelProperty(value = "排序类型")
+    String order;
+    @ApiModelProperty(value = "排序字段名称")
+    String orderProp;
+
     public int getPage() {
         return page;
     }
@@ -60,5 +65,16 @@ public class Querydto {
     public void setDate(List<Timestamp> date) {
         this.date = date;
     }
-
+    public String getOrder() {
+        return order;
+    }
+    public void setOrder(String order) {
+        this.order = order;
+    }
+    public String getOrderProp() {
+        return orderProp;
+    }
+    public void setOrderProp(String orderProp) {
+        this.orderProp = orderProp;
+    }
 }

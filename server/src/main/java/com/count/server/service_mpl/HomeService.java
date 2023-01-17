@@ -43,10 +43,23 @@ public class HomeService implements IHomeService{
         return queryString;
     }
 
+    private boolean filterOrderProp(String prop) {
+        List<String> types = new ArrayList<String>() {{
+            add("label");
+            add("cus_date");
+            add("type");
+            add("custom");
+            add("count");
+            add("write_off");
+        }};
+        return !types.contains(prop);
+    }
+
     @Override
     public ListResult list(Querydto querydto){
         querydto.setPage((querydto.getPage() - 1) * querydto.getNum());
         querydto.setType(filterType(querydto.getType(), querydto.getKey()));
+        querydto.setOrder((filterOrderProp(querydto.getOrderProp()) || querydto.getOrder() == null) ? null : querydto.getOrder().equals("ascending") ? "asc" : "desc");
         ListResult result = new ListResult();
         result.setList(mapper.list(querydto));
         result.setCount(mapper.count(querydto)); 
