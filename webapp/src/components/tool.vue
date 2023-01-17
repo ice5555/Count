@@ -10,13 +10,13 @@
           ></el-option>
         </el-select>
       </el-col>
-      <el-col :span="2">
+      <el-col :span="3">
         <el-input size="mini" placeholder="请输入关键字" v-model="params.key" clearable="clearable" @clear="params.key=key;search()"></el-input>
       </el-col>
-      <el-col :span="1">
+      <el-col :span="2">
         <el-button size="mini" type="primary" @click="params.key=key;search()">搜索</el-button>
       </el-col>
-      <el-col :span="4">
+      <el-col :span="6">
         <el-date-picker
           @change="search"
           size="mini"
@@ -27,26 +27,24 @@
           end-placeholder="结束日期">
         </el-date-picker>
       </el-col>
-      <!-- <el-col :span="2">
+      <el-col :span="2">
         <el-button size="mini" type="success" @click="$emit('getLastCount')">获取平账日</el-button>
-      </el-col> -->
-      <el-col :span="4">
+      </el-col>
+      <el-col :span="2">
         <el-button size="mini" type="primary" @click="$emit('add')">添加记录</el-button>
       </el-col>
-      <el-col :span="1">
+      <el-col :span="2">
         <el-button size="mini" type="danger" @click="$emit('delete')">批量删除</el-button>
       </el-col>
-      <!-- <el-col :span="5" style="text-align: right">  
-         v-model="params.write_off" -->
-        <!-- <el-switch
+      <el-col :span="5" style="text-align: right">
+        <el-switch
           @change="search"
           size="mini"
-       
-    
+          v-model="params.write_off"
+          active-text="已销账"
           inactive-text="全部">
-        </el-switch>      -->
-        <!-- active-text="已销账" -->
-      <!-- </el-col> -->
+        </el-switch>
+      </el-col>
     </el-row>
   </template>
   
@@ -57,7 +55,7 @@
             return{
               key:"",
               params:{
-                // write_off:false,
+                write_off:false,
                 type:"all",
                 key:"",
               },
