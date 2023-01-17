@@ -104,7 +104,7 @@
           "write_off": false
         }
         this.$axiosJava.post("api/home/list", form).then(res => {
-          this.params.date = [new Date(res.data.list[0].cus_date) - (-24 * 60 * 60 * 1000), new Date() - (1000 * 60 * 60 * -5 * 24)]
+          this.params.date = [new Date(res.data.list[0].cus_date) , new Date() - (1000 * 60 * 60 * -7* 24)]
           this.$emit("changeDate", this.params.date)
           this.reSearch()
         }).catch((error) => {

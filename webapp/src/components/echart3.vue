@@ -58,9 +58,9 @@
           total += map[i]
           count++
         }
-        let ave = total / count
+        let ave = (total / count).toFixed(2)
         for (let i in map) {
-          message[i] = ave - map[i]
+          message[i] = (ave - map[i]).toFixed(2)
         }
         this.message = message
       },
