@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.count.server.model.HomeDto;
 import com.count.server.reqdto.Querydto;
@@ -20,6 +21,15 @@ import com.count.server.service.IHomeService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 @RestController
 @RequestMapping("api/home")
@@ -69,6 +79,32 @@ public class Home {
     @ApiOperation("批量删除")
     public ResponseEntity<Integer> delete(@RequestBody List<Integer> ids ){
         return ResponseEntity.ok(HomeService.delete(ids));
+    }
+
+    @ApiOperation("上传文件")
+    @PostMapping("/upload")
+    public ResponseEntity upload(@RequestParam("file") MultipartFile file) throws IOException {
+        String fileName = file.getOriginalFilename();
+        String extensionName = fileName.substring(fileName.indexOf("."));
+        String newFileName = String.valueOf(System.currentTimeMillis()) + extensionName;
+        File root = new File("./upload");
+
+        String newsPath = root.getCanonicalPath() + File.separator + "common";
+        File dir = new File(newsPath);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        String filePath = newsPath + File.separator + newFileName;
+        File dest = new File(filePath);
+        file.transferTo(dest);
+        Map<String, String> resultMap = new HashMap<>();
+        resultMap.put("name", newFileName);
+        return ResponseEntity.ok(resultMap);
+    }
+    @ApiOperation("处理文件")
+    @GetMapping("/deal")
+    public ResponseEntity<Boolean> deal(@RequestParam("path") String path) throws IOException, ParseException {
+        return ResponseEntity.ok(HomeService.deal(path));
     }
 
 }
