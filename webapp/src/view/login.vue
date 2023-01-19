@@ -113,13 +113,15 @@
       width: 100%;
       height: 100%;
       background-color: whitesmoke;
-      background: url("../../static/image/login.png");
+      background: url("../../static/image/login.jpeg");
+      background-size: cover;
+      background-position: center;
     }
   
     .login-container .login-form {
-      background-color: white;
+      background-color: rgb(224, 224, 224);
       position: absolute;
-      width: 500px;
+      width: 300px;
       height: 300px;
       left: calc(50% - 250px);
       top: calc(50% - 200px);
