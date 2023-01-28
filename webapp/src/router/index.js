@@ -15,7 +15,7 @@ let router = new Router({
     },
     {
       path: "/login",
-      name: "home",
+      name: "login",
       component: () => import( "@/view/login")
     },
 

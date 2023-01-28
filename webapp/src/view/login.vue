@@ -13,9 +13,9 @@
         </div>
   
         <el-form-item prop="username">
-          <span class="svg-container">
+          <!-- <span class="svg-container">
             <svg-icon icon-class="user"/>
-          </span>
+          </span> -->
           <el-input
             auto-complete="on"
             name="username"
@@ -28,12 +28,10 @@
         </el-form-item>
   
         <el-form-item prop="password">
-          <span class="svg-container">
+          <!-- <span class="svg-container">
             <svg-icon icon-class="password"/>
-          </span>
+          </span> -->
           <el-input
-            :key="passwordType"
-            :type="passwordType"
             @keyup.enter.native="handleLogin"
             auto-complete="on"
             name="password"
@@ -42,8 +40,8 @@
             tabindex="2"
             v-model="loginForm.password"
           />
-          <span @click="showPwd" class="show-pwd">
-          </span>
+          <!-- <span @click="showPwd" class="show-pwd"> -->
+          <!-- </span> -->
         </el-form-item>
   
         <el-button :loading="loading" @click.native.prevent="handleLogin" style="width:100%;margin-bottom:30px;"
@@ -53,57 +51,39 @@
     </div>
   </template>
   
-  <script>
+<script>
     import Cookie from "js-cookie"
   
     export default {
       name: "login",
       data() {
-        const validateUsername = (rule, value, callback) => {
-          if (value.trim().length < 1) {
-            callback(new Error("Please enter the correct user name"))
-          } else {
-            callback()
-          }
-        }
-        const validatePassword = (rule, value, callback) => {
-          if (value.length < 6) {
-            callback(new Error("The password can not be less than 6 digits"))
-          } else {
-            callback()
-          }
-        }
         return {
           loginForm: {
             username: "",
             password: ""
           },
-          loginRules: {
-            username: [{required: true, trigger: "blur", validator: validateUsername}],
-            password: [{required: true, trigger: "blur", validator: validatePassword}]
-          },
-          loading: false,
-          passwordType: "password",
-          redirect: undefined
+          loading: false
         }
       },
       methods: {
-        showPwd() {
-          if (this.passwordType === "password") {
-            this.passwordType = ""
-          } else {
-            this.passwordType = "password"
-          }
-          this.$nextTick(() => {
-            this.$refs.password.focus()
-          })
-        },
-        handleLogin() {
-          Cookie.set("token", "1111", {expires: 1,})
-          location.reload()
-        
-        }
-      }
+    handleLogin() {
+        this.$axiosJava.post('/user/login', this.loginForm)
+        .then((res) => {
+            if (res.data.states) {
+              localStorage.setItem("userId", res.data.userId);
+                Cookie.set("token", res.data.userId);
+                // this.$store.commit('setUsername', res.data.username)
+                this.$router.push({path: '/'});
+            } else {
+                alert(res.data.mag);
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    }
+}
+
     }
   </script>
   
