@@ -29,7 +29,7 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public void regester(UserDto userDto) {
+    public void register(UserDto userDto) {
 
         if(mapper.findByUsername(userDto.getUsername())==null) {
             mapper.save(userDto);

@@ -18,6 +18,11 @@ let router = new Router({
       name: "login",
       component: () => import( "@/view/login")
     },
+    {
+      path: "/register",
+      name: "register",
+      component: () => import( "@/view/register")
+    },
 
   ]
 })
@@ -27,6 +32,8 @@ let router = new Router({
 router.beforeEach((to, from, next) => {
   if (!Cookie.get("token")) {
     if (to.path == "/login")
+      next()
+    else if(to.path == "/register")
       next()
     else
       next("/login")

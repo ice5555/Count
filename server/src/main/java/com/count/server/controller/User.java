@@ -53,7 +53,7 @@ public class User {
             return result;
         }
 @PostMapping("register")
-    public Result regiter(String code, String key, @RequestBody UserDto userDto, HttpServletRequest request){
+    public Result register(String code, String key, @RequestBody UserDto userDto, HttpServletRequest request){
 
         Result result = new Result();
 
@@ -66,29 +66,20 @@ public class User {
         try{
         if(code.equalsIgnoreCase(keyCode)){
             //注册用户
-
-                UserService.regester(userDto);
+                UserService.register(userDto);
                 result.setMag("注册成功！");
-
-
-
         }else{
             throw new RuntimeException("验证码有误！！！");
         }
         }catch (Exception e){
             e.printStackTrace();
             result.setMag(e.getMessage()).setStates(false);
-
         }
-
 
         return  result;
 
     }
 
-
-
-    
 
 @GetMapping("getImage")
 private Map<String,String> getImage(HttpServletRequest request) throws IOException {
