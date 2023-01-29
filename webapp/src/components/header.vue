@@ -1,6 +1,6 @@
 <template>
     <div class="Header">
-      <img :src="'./static/image/pig.png'">
+      <img :src="'./static/image/logo4.png'">
       <div class="title">记账系统</div>
       <div class="user"><i class="el-icon-user-solid"></i>admin </div>
     </div>
