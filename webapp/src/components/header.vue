@@ -1,6 +1,6 @@
 <template>
     <div class="Header">
-      <img :src="'./static/image/logo4.png'">
+      <img class="" :src="'./static/image/logo4.png'">
       <div class="title">记账系统</div>
       <div class="user"><i class="el-icon-user-solid"></i>admin </div>
     </div>
@@ -25,7 +25,10 @@
   
     .Header img {
       width: 42px;
-      margin: 9px;
+      margin-top: 9px;
+      margin-bottom: 9px;
+      margin-left: 9px;
+      /* margin */
     }
   
     .Header .title{
