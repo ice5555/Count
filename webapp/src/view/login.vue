@@ -201,9 +201,10 @@ export default {
   outline: none; */
   /* margin:2.5rem 0 0; */
   height: 3 rem;
+  margin-bottom: 3px;
   /* width: 10%; */
-
-  margin: 10px;
+/* 
+  margin: 10px; */
 
   /* cursor: pointer; */
 }
