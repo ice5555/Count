@@ -23,6 +23,11 @@ let router = new Router({
       name: "register",
       component: () => import( "@/view/register")
     },
+    {
+      path: "/root",
+      name: "root",
+      component: () => import( "@/view/root")
+    },
 
   ]
 })
@@ -40,6 +45,9 @@ router.beforeEach((to, from, next) => {
   } else {
     switch (to.path) {
       case "/":
+        next()
+        break
+      case "/root":
         next()
         break
       default:
