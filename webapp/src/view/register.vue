@@ -154,7 +154,7 @@
   
   <script>
 export default {
-  // name: "register",
+  //name: "register",
   data() {
     var validatePass = (rule, value, callback) => {
       if (value === "") {
@@ -188,7 +188,18 @@ export default {
       key: "",
       rules: {
         password: [{ validator: validatePass, trigger: "blur" }],
-        passwordConfirmation: [{ validator: validatePass2, trigger: "blur" }],
+    
+        passwordConfirmation: [{
+validator: (rule, value, callback) => {
+if (value !== this.userDto.password) {
+callback(new Error("两次密码输入不一致"));
+} else {
+callback();
+}
+},
+trigger: "blur"
+}],
+
       },
       // userDto:{},
     };
@@ -282,7 +293,7 @@ export default {
 }
 
 .input {
-  margin-right: 25px;
+  margin-right: 19px;
   outline: none;
   /* width: 100%; */
   position: relative;
@@ -295,7 +306,7 @@ export default {
 }
 
 .input-vertifycode {
-  margin-left: -15px;
+  margin-left: -40px;
   outline: none;
   width: 27%;
   position: relative;
@@ -350,7 +361,7 @@ export default {
   margin-right: -14px;
 }
 .retype{
-  margin-right: 14px;
+  margin-right:10px;
 }
 .email{
   margin-right: -14px;
