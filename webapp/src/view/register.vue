@@ -31,11 +31,11 @@
           </div> 
           
           <el-form-item class="label" label="密码" prop="password">
-            <div   class="input">
+            <div class="password">
 
-              <el-input
-              :border="false"
-            
+              <input
+             
+              class="input"
               auto-complete="off"
               name="password"
               placeholder="请输入密码"
@@ -62,9 +62,10 @@
               
               class="input"
               auto-complete="off"
-             
+              name="passwordConfirmation"
+              placeholder="请再次输入密码"
               ref="passwordConfirmation"
-             
+              tabindex="1"
               type="password"
               v-model="userDto.passwordConfirmation"
             />
@@ -153,7 +154,7 @@
   
   <script>
 export default {
-  //name: "register",
+  // name: "register",
   data() {
     var validatePass = (rule, value, callback) => {
       if (value === "") {
@@ -187,18 +188,7 @@ export default {
       key: "",
       rules: {
         password: [{ validator: validatePass, trigger: "blur" }],
-    
-        passwordConfirmation: [{
-validator: (rule, value, callback) => {
-if (value !== this.userDto.password) {
-callback(new Error("两次密码输入不一致"));
-} else {
-callback();
-}
-},
-trigger: "blur"
-}],
-
+        passwordConfirmation: [{ validator: validatePass2, trigger: "blur" }],
       },
       // userDto:{},
     };
@@ -292,7 +282,7 @@ trigger: "blur"
 }
 
 .input {
-  margin-right: 19px;
+  margin-right: 25px;
   outline: none;
   /* width: 100%; */
   position: relative;
@@ -305,7 +295,7 @@ trigger: "blur"
 }
 
 .input-vertifycode {
-  margin-left: -40px;
+  margin-left: -15px;
   outline: none;
   width: 27%;
   position: relative;
@@ -360,7 +350,7 @@ trigger: "blur"
   margin-right: -14px;
 }
 .retype{
-  margin-right:10px;
+  margin-right: 14px;
 }
 .email{
   margin-right: -14px;
