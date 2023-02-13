@@ -31,11 +31,11 @@
           </div> 
           
           <el-form-item class="label" label="密码" prop="password">
-            <div class="password">
+            <div   class="input">
 
-              <input
-             
-              class="input"
+              <el-input
+              :border="false"
+            
               auto-complete="off"
               name="password"
               placeholder="请输入密码"
@@ -62,10 +62,9 @@
               
               class="input"
               auto-complete="off"
-              name="passwordConfirmation"
-              placeholder="请再次输入密码"
+             
               ref="passwordConfirmation"
-              tabindex="1"
+             
               type="password"
               v-model="userDto.passwordConfirmation"
             />
