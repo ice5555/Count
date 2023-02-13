@@ -23,7 +23,11 @@
       <el-button size="mini" type="primary" @click="search">搜索</el-button>
     </el-col>
 
+<<<<<<< HEAD
     <el-col :span="4">
+=======
+    <el-col :span="5">
+>>>>>>> 1701cb278a1113ab54e04eb255185bb07b506ea3
       <el-date-picker
         @change="search"
         size="mini"
@@ -49,7 +53,11 @@
 
     </el-col>
     <el-col :span="2">
+<<<<<<< HEAD
       <el-button size="mini" type="success">获取平账日</el-button>
+=======
+      <el-button size="mini" type="success" @click="$emit('getLastCount')">获取平账日</el-button>
+>>>>>>> 1701cb278a1113ab54e04eb255185bb07b506ea3
     </el-col>
     <el-col :span="2">
       <el-button size="mini" type="primary" @click="$emit('add')"
@@ -61,7 +69,11 @@
         >批量删除</el-button
       >
     </el-col>
+<<<<<<< HEAD
     <el-col :span="5" style="text-align: right">
+=======
+    <el-col :span="4" style="text-align: right">
+>>>>>>> 1701cb278a1113ab54e04eb255185bb07b506ea3
       <el-switch
         size="mini"
         v-model="params.write_off"

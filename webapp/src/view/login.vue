@@ -35,6 +35,7 @@
                 class="input"
                 auto-complete="on"
                 name="password"
+                type="password"
                 placeholder="Password"
                 ref="password"
                 tabindex="2"
